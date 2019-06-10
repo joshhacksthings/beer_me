@@ -1,2 +1,7 @@
 venv/
 .idea/
+tests/__pycache__/
+__pycache__/
+.tox/
+.egg-info/
+beer_me_setup_tools.egg-info/
