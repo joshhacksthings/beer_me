@@ -6,3 +6,4 @@ __pycache__/
 .egg-info/
 beer_me_setup_tools.egg-info/
 beer_me/*.pyc
+
