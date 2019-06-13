@@ -21,9 +21,9 @@ def create_app(config=None):
     def hello_world():
         return "Hello World"
 
-    @app.route('/greet')
-    def greet():
-        user_info = {'username': 'Josh', 'age': "20"}
+    @app.route('/greet/<someName>')
+    def greet(someName):
+        user_info = {'username': someName, 'age': 25}
         return render_template(
             'user_greet.html',
             user=user_info['username'],

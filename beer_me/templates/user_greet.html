@@ -3,6 +3,14 @@
         <title>Templating</title>
     </head>
     <body>
+        {% if user and age %}
         <h1>Hello, {{ user }}, you're {{ age }} years old.</h1>
+        {% elif user %}
+        <h1>Hello, there {{ user }}!</h1>
+        {% elif age %}
+        <h1>Hello, there ... {{ age}}?! Is that really your name?</h1>
+        {% else %}
+        <h1>Hello, there!</h1>
+        {% endif %}
     </body>
 </html>
