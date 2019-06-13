@@ -21,6 +21,19 @@ def create_app(config=None):
     def hello_world():
         return "Hello World"
 
+    @app.route('/greet')
+    def greet():
+        user = {'username': 'Josh', 'age': "20"}
+        return '''
+    <html>
+        <head>
+            <title>Templating</title>
+        </head>
+        <body>
+            <h1>Hello, ''' + user['username'] + '''], you're ''' + user['age'] + ''' years old.</h1>
+        </body>
+    </html>'''
+
     @app.route("/foo/<someId>")
     def foo_url_arg(someId):
         return jsonify({"echo": someId})
