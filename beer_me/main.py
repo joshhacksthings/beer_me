@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template
 from flask_cors import CORS
 
 
@@ -23,16 +23,11 @@ def create_app(config=None):
 
     @app.route('/greet')
     def greet():
-        user = {'username': 'Josh', 'age': "20"}
-        return '''
-    <html>
-        <head>
-            <title>Templating</title>
-        </head>
-        <body>
-            <h1>Hello, ''' + user['username'] + '''], you're ''' + user['age'] + ''' years old.</h1>
-        </body>
-    </html>'''
+        user_info = {'username': 'Josh', 'age': "20"}
+        return render_template(
+            'user_greet.html',
+            user=user_info['username'],
+            age=user_info['age'])
 
     @app.route("/foo/<someId>")
     def foo_url_arg(someId):
