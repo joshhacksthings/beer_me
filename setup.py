@@ -13,6 +13,10 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/joshhacksthings/beer_me",
     packages=setuptools.find_packages(),
+    install_requires=[
+        "Flask>=1.0.3",
+        "Flask-Cors>=3.0.8"
+    ],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
