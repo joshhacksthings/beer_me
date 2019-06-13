@@ -30,7 +30,7 @@ def create_app(config=None):
             <title>Templating</title>
         </head>
         <body>
-            <h1>Hello, ''' + user['username'] + '''!, you’re ''' + user['age'] + ''' years old.</h1>
+            <h1>Hello, ''' + user['username'] + '''], you're ''' + user['age'] + ''' years old.</h1>
         </body>
     </html>'''
 
