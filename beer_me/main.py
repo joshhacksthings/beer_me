@@ -46,20 +46,21 @@ def create_app(config=None):
                                     beer=beer,
                                     rating=rating,
                                     location=location))
-        return render_template("bio_form.html")
+        return render_template("beer_form.html")
 
     @app.route('/ratebeer', methods=['GET'])
-    def showbio():
+    def showbeer():
         username = request.args.get('username')
         beer = request.args.get('beer')
         rating = request.args.get('rating')
         location = request.args.get('location')
-        return render_template("show_bio.html",
-                               username=username,
-                               beer=beer,
-                               rating=rating,
-                               location=location
-                               )
+        return render_template(
+            "show_beer_entry.html",
+            username=username,
+            beer=beer,
+            rating=rating,
+            location=location
+        )
 
     return app
 
