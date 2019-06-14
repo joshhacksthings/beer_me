@@ -1,6 +1,7 @@
 import os
 
-from flask import Flask, jsonify, render_template
+from flask import Flask, jsonify, render_template, request,\
+    url_for, redirect
 from flask_cors import CORS
 
 
@@ -32,6 +33,33 @@ def create_app(config=None):
     @app.route("/foo/<someId>")
     def foo_url_arg(someId):
         return jsonify({"echo": someId})
+
+    @app.route('/form', methods=['POST', 'GET'])
+    def beer_data_form():
+        if request.method == "POST":
+            username = request.form['username']
+            beer = request.form['beer']
+            rating = request.form['rating']
+            location = request.form['location']
+            return redirect(url_for('ratebeer',
+                                    username=username,
+                                    beer=beer,
+                                    rating=rating,
+                                    location=location))
+        return render_template("bio_form.html")
+
+    @app.route('/ratebeer', methods=['GET'])
+    def showbio():
+        username = request.args.get('username')
+        beer = request.args.get('beer')
+        rating = request.args.get('rating')
+        location = request.args.get('location')
+        return render_template("show_bio.html",
+                               username=username,
+                               beer=beer,
+                               rating=rating,
+                               location=location
+                               )
 
     return app
 
