@@ -20,3 +20,10 @@ def test_some_id(app):
     res = app.get("/foo/12345")
     assert res.status_code == 200
     assert b"12345" in res.data
+
+
+def test_beer_form(app):
+    res = app.get("/form")
+    print(res.status_code)
+    assert res.status_code == 200
+    assert b"12345" in res.data
