@@ -26,4 +26,11 @@ def test_beer_form(app):
     res = app.get("/form")
     print(res.status_code)
     assert res.status_code == 200
-    assert b"12345" in res.data
+    assert b"<h1>Beer Data Form" in res.data
+
+
+def test_beer_response(app):
+    res = app.get("/ratebeer")
+    print(res.status_code)
+    assert res.status_code == 200
+    assert b"<h1>Beer-Data Details" in res.data
