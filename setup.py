@@ -15,7 +15,8 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     install_requires=[
         "Flask>=1.0.3",
-        "Flask-Cors>=3.0.8"
+        "Flask-Cors>=3.0.8",
+        "flask_sqlalchemy==2.4.0"
     ],
     classifiers=[
         "Programming Language :: Python :: 3",

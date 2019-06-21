@@ -3,10 +3,15 @@ import os
 from flask import Flask, jsonify, render_template, request,\
     url_for, redirect
 from flask_cors import CORS
+from flask_sqlalchemy import SQLAlchemy
 
 
 def create_app(config=None):
+    # SQL Alchemy Settings
     app = Flask(__name__)
+    app.config['DEBUG'] = True
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/appdb'
+    db = SQLAlchemy(app)
 
     # See http://flask.pocoo.org/docs/latest/config/
     app.config.update(dict(DEBUG=True))
