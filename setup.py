@@ -16,7 +16,10 @@ setuptools.setup(
     install_requires=[
         "Flask>=1.0.3",
         "Flask-Cors>=3.0.8",
-        "flask_sqlalchemy==2.4.0"
+        "flask_sqlalchemy==2.4.0",
+        "flask_script==2.0.6",
+        "flask_migrate==2.5.2",
+        "flask_wtf==0.14.2"
     ],
     classifiers=[
         "Programming Language :: Python :: 3",

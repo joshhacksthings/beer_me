@@ -13,4 +13,6 @@ This wrapper will allow management of the database at a high level. Database com
 The application will use SQLAlchemy to make calls to the PostgreSQL database.
 
 
+Next, I use Flask-Migrate, a wrapper for Alembic, a database migration framework for SQLAlchemy
+
 ## Notes

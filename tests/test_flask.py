@@ -4,7 +4,7 @@ from beer_me import main
 
 @pytest.fixture
 def app():
-    app = main.create_app()
+    app = main.app
     app.debug = True
     return app.test_client()
 
