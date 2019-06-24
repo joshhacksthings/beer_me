@@ -43,6 +43,7 @@ class PostForm(FlaskForm):
 def add_post():
     postform = PostForm()
     print(request.method)
+    # TODO: this block does not get executed...
     if request.method == 'POST':
         print('im in the post request')
         pf = Post(
