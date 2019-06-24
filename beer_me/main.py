@@ -42,7 +42,9 @@ class PostForm(FlaskForm):
 @app.route('/addpost', methods=['GET', 'POST'])
 def add_post():
     postform = PostForm()
+    print(request.method)
     if request.method == 'POST':
+        print('im in the post request')
         pf = Post(
             postform.title.data,
             postform.post_text.data,
@@ -56,6 +58,7 @@ def add_post():
 @app.route('/posts', methods=['GET', 'POST'])
 def view_posts():
     posts = Post.query.all()
+    print(posts)
     return render_template('view_posts.html', posts=posts)
 
 
