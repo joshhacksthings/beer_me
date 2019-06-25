@@ -48,7 +48,7 @@ def add_post():
         print('im in the post request')
         pf = Post(
             postform.title.data,
-            postform.post_text.data,
+            postform.post_text.data
         )
         db.session.add(pf)
         db.session.commit()
@@ -84,7 +84,9 @@ def foo_url_arg(someId):
 
 @app.route('/form', methods=['POST', 'GET'])
 def beer_data_form():
+    print('beer data form')
     if request.method == "POST":
+        print('posting in beer')
         username = request.form['username']
         beer = request.form['beer']
         rating = request.form['rating']
