@@ -33,6 +33,19 @@ class Post(db.Model):
         self.post_text = post_text
 
 
+# Model
+class Beer(db.Model):
+    id = db.Column(db.Integer(), primary_key=True)
+    username = db.Column(db.String(80), unique=True)
+    beer = db.Column(db.String(255))
+    rating = db.Column(db.Integer())
+
+    def __init__(self, username, beer, rating):
+        self.username = username
+        self.beer = beer
+        self.rating = rating
+
+
 # Flask WTF
 class PostForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])
@@ -59,7 +72,7 @@ def add_post():
 @app.route('/posts', methods=['GET', 'POST'])
 def view_posts():
     posts = Post.query.all()
-    print(posts)
+    print("There are: {} posts".format(len(posts)))
     return render_template('view_posts.html', posts=posts)
 
 
