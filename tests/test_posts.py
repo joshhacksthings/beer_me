@@ -17,7 +17,7 @@ def test_add_post(app):
 
     # Posting
     data = dict(
-        title="test_title_3",
+        title="test_title_4",
         post_text="test_text_3"
     )
     post = app.post("/addpost", data=data)

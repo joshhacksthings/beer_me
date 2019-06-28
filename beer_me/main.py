@@ -25,25 +25,12 @@ manager.add_command('db', MigrateCommand)
 # Model
 class Post(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
-    title = db.Column(db.String(80), unique=True)
+    title = db.Column(db.String(80), unique=False)
     post_text = db.Column(db.String(255))
 
     def __init__(self, title, post_text):
         self.title = title
         self.post_text = post_text
-
-
-# Model
-class Beer(db.Model):
-    id = db.Column(db.Integer(), primary_key=True)
-    username = db.Column(db.String(80), unique=True)
-    beer = db.Column(db.String(255))
-    rating = db.Column(db.Integer())
-
-    def __init__(self, username, beer, rating):
-        self.username = username
-        self.beer = beer
-        self.rating = rating
 
 
 # Flask WTF
@@ -55,10 +42,8 @@ class PostForm(FlaskForm):
 @app.route('/addpost', methods=['GET', 'POST'])
 def add_post():
     postform = PostForm()
-    print(request.method)
     # TODO: this block does not get executed...
     if request.method == 'POST':
-        print('im in the post request')
         pf = Post(
             postform.title.data,
             postform.post_text.data
@@ -72,7 +57,6 @@ def add_post():
 @app.route('/posts', methods=['GET', 'POST'])
 def view_posts():
     posts = Post.query.all()
-    print("There are: {} posts".format(len(posts)))
     return render_template('view_posts.html', posts=posts)
 
 
@@ -98,6 +82,7 @@ def foo_url_arg(someId):
 @app.route('/form', methods=['POST', 'GET'])
 def beer_data_form():
     print('beer data form')
+    print(request.method)
     if request.method == "POST":
         print('posting in beer')
         username = request.form['username']
