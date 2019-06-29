@@ -25,7 +25,7 @@ manager.add_command('db', MigrateCommand)
 # Model
 class Post(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
-    title = db.Column(db.String(80), unique=False)
+    title = db.Column(db.String(80), unique=True)
     post_text = db.Column(db.String(255))
 
     def __init__(self, title, post_text):
@@ -46,7 +46,7 @@ def add_post():
     if request.method == 'POST':
         pf = Post(
             postform.title.data,
-            postform.post_text.data
+            postform.post_text.data,
         )
         db.session.add(pf)
         db.session.commit()

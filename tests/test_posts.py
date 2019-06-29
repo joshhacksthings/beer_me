@@ -15,9 +15,11 @@ def test_add_post(app):
     assert res.status_code == 200
     assert b"<title>Add Post" in res.data
 
+    from random import randint
+    rand = randint(0, 10000)
     # Posting
     data = dict(
-        title="test_title_4",
+        title="test_title_{}".format(rand),
         post_text="test_text_3"
     )
     post = app.post("/addpost", data=data)
