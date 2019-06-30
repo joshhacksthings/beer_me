@@ -1,13 +1,19 @@
+import os
 import pytest
+import tempfile
 from beer_me import main
 
 
 @pytest.fixture
 def app():
-    app = main.app
-    app.debug = True
-    # app.use_reloader=False
-    return app.test_client()
+    db_fd, main.app.config['DATABASE'] = tempfile.mkstemp()
+    main.app.config['TESTING'] = True
+    client = main.app.test_client()
+
+    yield client
+
+    os.close(db_fd)
+    os.unlink(main.app.config['DATABASE'])
 
 
 def test_add_post(app):
