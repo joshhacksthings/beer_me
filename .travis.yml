@@ -9,4 +9,3 @@ services:
   - postgresql
 before_script:
   - psql -c "CREATE DATABASE appdb;" -U postgres
-  - psql -c "CREATE USER foo WITH PASSWORD 'bar';" -U postgres
