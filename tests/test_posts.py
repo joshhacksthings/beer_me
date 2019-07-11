@@ -40,5 +40,5 @@ def test_view_posts(app):
     res = app.get("/posts")
     assert res.status_code == 200
     # Check above post inputs
-    assert b"test_title_2" in res.data
+    assert b"test_title_3" in res.data
     assert b"test_text" in res.data
