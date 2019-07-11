@@ -8,4 +8,5 @@ script: tox
 services:
   - postgresql
 before_script:
+  - export FLASK_APP="$TRAVIS_BUILD_DIR/beer_me/main.py"
   - psql -c "CREATE DATABASE appdb;" -U postgres
