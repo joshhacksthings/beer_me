@@ -2,6 +2,7 @@ import os
 import pytest
 import tempfile
 from beer_me import main
+from beer_me.database import init_db
 
 
 @pytest.fixture
@@ -9,6 +10,9 @@ def app():
     db_fd, main.app.config['DATABASE'] = tempfile.mkstemp()
     main.app.config['TESTING'] = True
     client = main.app.test_client()
+
+    with main.app.app_context():
+        init_db()
 
     yield client
 
