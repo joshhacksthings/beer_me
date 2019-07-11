@@ -19,7 +19,8 @@ setuptools.setup(
         "flask_sqlalchemy==2.4.0",
         "flask_script==2.0.6",
         "flask_migrate==2.5.2",
-        "flask_wtf==0.14.2"
+        "flask_wtf==0.14.2",
+        "psycopg2==2.8.3"
     ],
     classifiers=[
         "Programming Language :: Python :: 3",

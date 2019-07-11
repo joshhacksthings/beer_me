@@ -42,6 +42,7 @@ class PostForm(FlaskForm):
 @app.route('/addpost', methods=['GET', 'POST'])
 def add_post():
     postform = PostForm()
+    # TODO: this block does not get executed...
     if request.method == 'POST':
         pf = Post(
             postform.title.data,
@@ -80,7 +81,10 @@ def foo_url_arg(someId):
 
 @app.route('/form', methods=['POST', 'GET'])
 def beer_data_form():
+    print('beer data form')
+    print(request.method)
     if request.method == "POST":
+        print('posting in beer')
         username = request.form['username']
         beer = request.form['beer']
         rating = request.form['rating']

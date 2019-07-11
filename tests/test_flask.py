@@ -1,12 +1,22 @@
+import os
 import pytest
+import tempfile
 from beer_me import main
 
 
 @pytest.fixture
 def app():
-    app = main.app
-    app.debug = True
-    return app.test_client()
+    db_fd, main.app.config['DATABASE'] = tempfile.mkstemp()
+    main.app.config['TESTING'] = True
+    client = main.app.test_client()
+
+    yield client
+
+    os.close(db_fd)
+    os.unlink(main.app.config['DATABASE'])
+    # app = main.app
+    # app.debug = True
+    # return app.test_client()
 
 
 def test_hello_world(app):

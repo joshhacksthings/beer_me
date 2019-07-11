@@ -5,3 +5,7 @@ python:
     - "3.6"
 install: pip install tox-travis
 script: tox
+services:
+  - postgresql
+before_script:
+  - psql -c "CREATE DATABASE appdb;" -U postgres
