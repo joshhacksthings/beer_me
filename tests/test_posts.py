@@ -12,7 +12,7 @@ def app():
     client = main.app.test_client()
 
     with main.app.app_context():
-        init_db()
+        main.db.create_all()
 
     yield client
 
