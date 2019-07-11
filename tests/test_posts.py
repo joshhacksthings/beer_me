@@ -2,7 +2,6 @@ import os
 import pytest
 import tempfile
 from beer_me import main
-from beer_me.database import init_db
 
 
 @pytest.fixture
