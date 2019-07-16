@@ -6,6 +6,7 @@ from flask_migrate import Migrate, MigrateCommand
 from flask_wtf import FlaskForm
 from wtforms import StringField
 from wtforms.validators import DataRequired
+from .models.post import Post
 
 
 app = Flask(__name__)
@@ -20,17 +21,6 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 manager = Manager(app)
 manager.add_command('db', MigrateCommand)
-
-
-# Model
-class Post(db.Model):
-    id = db.Column(db.Integer(), primary_key=True)
-    title = db.Column(db.String(80), unique=True)
-    post_text = db.Column(db.String(255))
-
-    def __init__(self, title, post_text):
-        self.title = title
-        self.post_text = post_text
 
 
 # Flask WTF
