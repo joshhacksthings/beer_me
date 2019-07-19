@@ -6,7 +6,7 @@ from flask_migrate import Migrate, MigrateCommand
 from flask_wtf import FlaskForm
 from wtforms import StringField
 from wtforms.validators import DataRequired
-from .models.post import Post
+from models.post import Post
 
 
 app = Flask(__name__)
