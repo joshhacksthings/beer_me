@@ -11,3 +11,4 @@ build/
 dist/beer_me_setup_tools-0.0.1-py3.6.egg dist/beer_me_setup_tools-0.0.1.tar.gz
 tests/__init__.pyc
 dist/beer_me_setup_tools-0.0.1-py3.6.egg
+*.pyc
